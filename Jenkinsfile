@@ -1,5 +1,10 @@
 pipeline{
     agent any
+     environment{
+        dockerhub_repo = "shivampateriyaknoldus/spring"
+        dockerhub_creds = 'dockershivam'
+        dockerImage = ''
+     }
     tools { 
         maven 'maven3'
     }
