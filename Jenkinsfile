@@ -4,6 +4,7 @@ pipeline{
         dockerhub_repo = "shivampateriyaknoldus/spring"
         dockerhub_creds = 'dockershivam'
         dockerImage = ''
+     }
     tools { 
         maven 'maven3'
     }
