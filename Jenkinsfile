@@ -7,7 +7,7 @@ pipeline{
      }
     tools { 
         maven 'maven3'
-        Docker 'docker'
+        // Docker 'docker'
     }
     stages
        {
@@ -38,9 +38,10 @@ pipeline{
             } 
              stage("building docker image"){
                     steps{
-                        script{
-                            dockerImage = docker.build dockerhub_repo + ":$GIT_COMMIT-build-$BUILD_NUMBER"
-                        }
+                        // script{
+                        //     dockerImage = docker.build dockerhub_repo + ":$GIT_COMMIT-build-$BUILD_NUMBER"
+                        // }
+                        sh "docker version"
                     }
              }    
 
