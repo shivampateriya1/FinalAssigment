@@ -38,13 +38,13 @@ pipeline{
             } 
              stage("building docker image"){
                     steps{
-                        // script{
-                        //     dockerImage = docker.build dockerhub_repo + ":$GIT_COMMIT-build-$BUILD_NUMBER"
-                        // }
-                        // sh "docker version"
-                        script {
-                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                        script{
+                            dockerImage = docker.build dockerhub_repo + ":$GIT_COMMIT-build-$BUILD_NUMBER"
                         }
+                        // sh "docker version"
+                        // script {
+                        //     dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                        // }
              }    
 
 
