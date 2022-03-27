@@ -41,8 +41,10 @@ pipeline{
                         // script{
                         //     dockerImage = docker.build dockerhub_repo + ":$GIT_COMMIT-build-$BUILD_NUMBER"
                         // }
-                        sh "docker version"
-                    }
+                        // sh "docker version"
+                        script {
+                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                        }
              }    
 
 
