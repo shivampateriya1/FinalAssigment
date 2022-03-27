@@ -41,13 +41,19 @@ pipeline{
                         script{
                             dockerImage = docker.build dockerhub_repo + ":$GIT_COMMIT-build-$BUILD_NUMBER"
                         }
-                        // sh "docker version"
-                        // script {
-                        //     dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                        // }
-             }    
-
-
+                       
+                     }    
+                }
+            stage("Pushing the docker image"){
+                    steps{
+                        script {
+                            docker.withRegistry('', dockerhub_creds){
+                                dockerImage.push()
+                                dockerImage.push('latest')
+                                dockerImage.push('v1')
+                            }
+                        }
+                    }
+                }    
         }
-}
 }      
