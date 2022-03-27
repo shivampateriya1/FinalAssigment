@@ -29,6 +29,19 @@ pipeline{
                     sh "mvn test"
                 }
             } 
+             stage("package")
+            {
+                steps{
+                    sh "mvn package"
+                }
+            } 
+             stage("building docker image"){
+                    steps{
+                        script{
+                            dockerImage = docker.build dockerhub_repo + ":$GIT_COMMIT-build-$BUILD_NUMBER"
+                        }
+                    }
+             }    
 
 
         }
